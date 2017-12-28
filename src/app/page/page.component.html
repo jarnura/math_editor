@@ -1,0 +1,17 @@
+<p>
+  page works!
+</p>
+<div *ngFor = "let l of list">
+    <div class="linediv">
+        <div class="variablebox">
+            <input class="inputbox" type="text" [(ngModel)]='variable[l]'> =
+        </div>
+        <div class="dropdown">
+             <app-home class="dropdown" (printcheck)="printflag($event)" (outputemit) = "variableid(variable[l]); assignvalue($event);"></app-home>
+        </div>
+        
+    </div>
+    {{l}} {{variable[l]}}
+    
+</div>
+<button (click) = "addline(true)"></button>

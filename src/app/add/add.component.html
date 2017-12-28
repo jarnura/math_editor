@@ -1,0 +1,28 @@
+<div [@dialog] *ngIf="visible" class="dialog">
+<p>
+  ADDITION works!
+</p>
+<div class = "container">
+
+        <h1>ADDITION</h1>
+        <form>
+           
+           <div class = "form-group">
+              <label for = "operanta">operant-1</label>
+              <input type = "number" class = "form-control" id = "operanta"
+                 [(ngModel)] = "operanta" name = "operanta">
+                 {{operanta}}
+           </div>
+           
+           <div class = "form-group">
+              <label for = "operantb">operant-2</label>
+              <input type = "number" class = "form-control" id = "operantb"
+                 [(ngModel)] = "operantb" name = "operantb">
+                 {{operantb}}
+           </div>
+           
+        </form>
+        <button class='btn btn-primary' (click) = "adddata(); close();">add</button>
+     </div>
+       <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+</div>

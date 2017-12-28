@@ -1,0 +1,16 @@
+.linediv {
+   text-align:center;
+}
+.inputbox {
+    border-width: 0px;
+    border-bottom-width: 3px;
+    width: 75px;
+}
+.variablebox {
+    position: relative;
+    display:inline-block;
+}
+.dropdown {
+    position: relative;
+    display:inline-block;
+}
