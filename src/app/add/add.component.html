@@ -9,15 +9,13 @@
            
            <div class = "form-group">
               <label for = "operanta">operant-1</label>
-              <input type = "number" class = "form-control" id = "operanta"
-                 [(ngModel)] = "operanta" name = "operanta">
+              <app-home (outputemit)="operantfa($event)"></app-home>
                  {{operanta}}
            </div>
            
            <div class = "form-group">
               <label for = "operantb">operant-2</label>
-              <input type = "number" class = "form-control" id = "operantb"
-                 [(ngModel)] = "operantb" name = "operantb">
+              <app-home (outputemit)="operantfb($event)"></app-home>
                  {{operantb}}
            </div>
            

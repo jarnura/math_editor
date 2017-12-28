@@ -29,6 +29,14 @@ export class AddComponent implements OnInit {
       value: 0
   };
   
+  operantfa(num) {
+      this.operanta = num;
+  }
+  
+  operantfb(num) {
+      this.operantb = num;
+  }
+  
    @Output()
       add: EventEmitter<any> = new EventEmitter();
       

@@ -1,7 +1,7 @@
-<div [hidden]="returned || diplayflag">
+<div [hidden]="returned">
     <select2 (valueChanged)="changedtopic($event)" [data]="exampleData"></select2>
 </div>
-<div [hidden]="!returned || diplayflag">
+<div [hidden]="!returned">
     {{displayobj['text']}} {{displayobj['value']}}
 </div>
 <app-add [(visible)]="data['addDialog']" (add) = "onCreateContent($event)">

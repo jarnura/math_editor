@@ -7,7 +7,7 @@
             <input class="inputbox" type="text" [(ngModel)]='variable[l]'> =
         </div>
         <div class="dropdown">
-             <app-home class="dropdown" (printcheck)="printflag($event)" (outputemit) = "variableid(variable[l]); assignvalue($event);"></app-home>
+             <app-home class="dropdown" (outputemit) = "variableid(variable[l]); assignvalue($event);"></app-home>
         </div>
         
     </div>

@@ -12,13 +12,11 @@ export class HomeComponent implements OnInit {
   }
   returned = false;
   t1: string;
-  diplayflag = false;
   public exampleData: Array<Select2OptionData>;
   data = {
   addDialog : false,
   subDialog : false,
   value: false,
-  display: false,
   };
   
   displayobj = {
@@ -28,8 +26,6 @@ export class HomeComponent implements OnInit {
   
   @Output()
       outputemit: EventEmitter<number> = new EventEmitter();
-  @Output()
-      printflag: EventEmitter<boolean> = new EventEmitter();
   
   public changedtopic(e: Object): void {
       
@@ -39,12 +35,6 @@ export class HomeComponent implements OnInit {
             this.data[this.t1]=true;
             console.log(this.data[this.t1]);
             console.log(this.data);
-            if(this.t1 === "display")
-            {
-                
-                this.diplayflag = true;
-                this.printcheck.emit(this.diplayflag);
-            }
     }
 
   ngOnInit() {
