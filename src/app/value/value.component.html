@@ -1,20 +1,6 @@
-<div [@dialog] *ngIf="visible" class="dialog">
-<p>
-  Value works!
-</p>
-<div class = "container">
-
-        <h1>Insert a value</h1>
-        <form>
-           
-           <div class = "form-group">
-              <input type = "number" class = "form-control" id = "operant"
-                 [(ngModel)] = "operant" name = "operant">
-                 {{operant}}
-           </div>
-           
-        </form>
-        <button class='btn btn-primary' (click) = "adddata(); close();">enter</button>
-     </div>
-       <button *ngIf="closable" (click)="close()" aria-label="Close" class="dialog__close-btn">X</button>
+<div [hidden]="visible">
+    (
+    <input  class="inputbox" (keyup.enter)="emitoperant()" type = "any"  id = "operant"
+        [(ngModel)] = "operant" name = "operant">
+    )
 </div>

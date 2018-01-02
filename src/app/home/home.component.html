@@ -1,12 +1,84 @@
-<div [hidden]="returned">
-    <select2 (valueChanged)="changedtopic($event)" [data]="exampleData"></select2>
+<!--<p>myNum: {{myNum}}</p>-->
+                           
+                           
+<div [hidden]="returned || initial">
+    <input list="exampleData" type="any" #inputhome (dblclick)="changedtopic($event.target.value)" (keyup.enter)="changedtopic($event.target.value)">
+<datalist #example id="exampleData">
+    <option  *ngFor="let func of exampleData" [ngValue]="func.text">{{func.text}}</option>
+  </datalist>
+
 </div>
-<div [hidden]="!returned">
-    {{displayobj['text']}} {{displayobj['value']}}
+<div [hidden]="!returned || equationvisible || haschild" (click)="makeinput()">
+    {{displayobj['text']}} 
+    <small style="color: grey;">( {{displayobj['value']}} )</small>
 </div>
-<app-add [(visible)]="data['addDialog']" (add) = "onCreateContent($event)">
-</app-add>
-<app-sub [(visible)]="data['subDialog']" (add) = "onCreateContent($event)">
-</app-sub>
-<app-value [(visible)]="data['value']" (add) = "onCreateContent($event)">
-</app-value>
+<div [hidden]="!data['add']">
+    <div class="functionname" (click)="makedropdown()">
+        add
+    </div>
+    <div class="containeroffunc">
+        <app-add [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['add']" (add)="onCreateContent($event)">
+        </app-add>
+    </div>
+</div>
+<div [hidden]="!data['sub']">
+    <div class="functionname" (click)="makedropdown()">
+        sub
+    </div>
+    <div class="containeroffunc">
+        <app-sub [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['sub']" (add) = "onCreateContent($event)">
+        </app-sub>
+    </div>
+</div>
+
+<div [hidden]="!data['value']">
+    <div class="functionname" (click)="makedropdown()">
+        _  
+    </div>
+    <div class="containeroffunc">
+        <app-value [(visible)]="!data['value']" (add) = "onCreateContent($event)">
+        </app-value>
+    </div>
+</div>
+<div [hidden]="!data['multiply']">
+   <div class="functionname" (click)="makedropdown()">
+        multiply 
+    </div>
+    <div class="containeroffunc">
+        <app-multiply [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['multiply']" (multiply) = "onCreateContent($event)">
+        </app-multiply>
+    </div>
+</div>
+<div [hidden]="!data['division']">
+   <div class="functionname" (click)="makedropdown()">
+        divide 
+    </div>
+    <div class="containeroffunc">
+        <app-division [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['division']" (division) = "onCreateContent($event)">
+        </app-division>
+    </div>
+</div>
+
+<div [hidden]="!data['powerof']">
+   <div class="functionname" (click)="makedropdown()">
+        powerof 
+    </div>
+    <div class="containeroffunc">
+        <app-powerof [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['powerof']" (powerof) = "onCreateContent($event)">
+        </app-powerof>
+    </div>
+</div>
+
+<app-display [(variabledata)]="variabledata" [(visible)]="data['display']" (add) = "onCreateContent($event)">
+</app-display>
+
+
+<div [hidden]="!data['sqrt']">
+    <div class="functionname" (click)="makedropdown()">
+        sqrt
+    </div>
+    <div class="containeroffunc">
+        <app-squareroot [islast]="islast" [(Checkcheck)]="Checkcheck" [(syncflag)]="syncflag" [(variabledata)]="variabledata" [(visible)]="data['sqrt']" (squareroot) = "onCreateContent($event)">
+        </app-squareroot>
+    </div>
+</div>

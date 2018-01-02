@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, OnChanges, EventEmitter, trigger, state, style, animate, transition } from '@angular/core';
+import { PageService } from '../page/page.service';
 
 @Component({
   selector: 'app-add',
@@ -17,13 +18,21 @@ import { Component, OnInit, Input, Output, OnChanges, EventEmitter, trigger, sta
   ]
 })
 export class AddComponent implements OnInit {
-
-  @Input() closable = true;
+    
+    constructor( private _functionService: PageService) { }
+    
   @Input() visible: boolean;
+  @Input() variabledata: any;
+  @Input() syncflag: boolean;
+  @Input() Checkcheck: boolean;
+  @Input() islast: boolean;
+  @Input() booleanvar: any;
   @Output() visibleChange: EventEmitter<boolean> = new EventEmitter<boolean>();
-  
-  operanta: number;
-  operantb: number;
+  @Output() variabledataChange: EventEmitter<any> = new EventEmitter<any>();
+  @Output() CheckcheckChange: EventEmitter<boolean> = new EventEmitter();
+  @Output() syncflagChange: EventEmitter<boolean> = new EventEmitter();
+ operanta: any;
+  operantb: any;
   addobject =  {
       text: "",
       value: 0
@@ -31,28 +40,33 @@ export class AddComponent implements OnInit {
   
   operantfa(num) {
       this.operanta = num;
+      console.log("operanta " + this.operanta['text']);
+      this.adddata();
   }
   
   operantfb(num) {
       this.operantb = num;
+      this.adddata();
   }
   
    @Output()
       add: EventEmitter<any> = new EventEmitter();
       
       adddata() {
-          this.addobject['text'] = "add(" + this.operanta  + "," + this.operantb + ")" ;
-          this.addobject['value'] = (this.operanta + this.operantb);
+          this.addobject['text'] = "add(" + this.operanta['text']  + "," + this.operantb['text'] + ")" ;
+          this.addobject['value'] = this._functionService.add(+this.operanta['value'],+this.operantb['value']);
       this.add.emit(this.addobject);
-      console.log(this.addobject.text + (this.operanta + this.operantb));
+      this.variabledataChange.emit(this.variabledata);
+      console.log(this.addobject.text + (this.operanta['value'] + this.operantb['value']));
+      //this.visible = false;
+    this.visibleChange.emit(this.visible);
     }
-  constructor() { }
 
   ngOnInit() {
+      console.log("add open");
+      console.log(this.islast);
+      console.log("add close");
   }
-          close() {
-    this.visible = false;
-    this.visibleChange.emit(this.visible);
-  }
+
 
 }

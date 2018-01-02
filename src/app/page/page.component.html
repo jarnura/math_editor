@@ -1,17 +1,47 @@
 <p>
   page works!
 </p>
-<div *ngFor = "let l of list">
-    <div class="linediv">
-        <div class="variablebox">
-            <input class="inputbox" type="text" [(ngModel)]='variable[l]'> =
-        </div>
-        <div class="dropdown">
-             <app-home class="dropdown" (outputemit) = "variableid(variable[l]); assignvalue($event);"></app-home>
-        </div>
+<table  align="center">
+    <tr *ngFor = "let l of list">
         
+            
+                <td style="text-align:center;">
+                    <div [hidden]="inputarray[l]" class="variablebox">
+                        <input (keyup.enter)="releaseinput(variable[l],l)" class="inputbox" type="text" [(ngModel)]='variable[l]'>
+                    </div>    
+                    <div [hidden]="!inputarray[l]" (click)="makeinput(l); variableid(variable[l],l);"  class="variablebox">
+                        {{variable[l]}}
+                    </div>
+                </td>
+                <td>=</td>
+                <td style="text-align:center;">
+                    <div class="dropdown">
+                         <app-home [islast]="inputarray2[l]" [(Checkcheck)]="syncflag2" [(syncflag)]="syncflag" [myNum]="numVal" [variabledata1]="variablemap1" [variabledata]="variablemap" class="dropdown" (outputemit) = "variableid(variable[l],l); assignvalue($event);"></app-home>
+                    </div>
+                </td>
+    <!--{{variable[l]}}-->
+</tr>
+</table>
+<!--myNum: <input type="number" [(ngModel)]="numVal" />-->
+<!--<button (click)="adda()">add</button>-->
+  <div>
+      <!--{{ouputvalue}}-->
+        <input type = "string" id = "val"
+                 [(ngModel)] = "val" name = "val">
+                 {{variablemap[val]}}
+                 
+                 <!--<input (change)="setfunction($event.target.value)" type="string" id="function"-->
+                 <!--[(ngModel)] = "functionname" name="functionname">-->
+                 <!--{{functionname}}-->
+                 
+                 
+                 
+         <!--<input (keyup.enter) = "selectvariable($event.target.value)" type = "string" class = "form-control" id = "val"-->
+         <!--[(ngModel)] = "val" name = "val">-->
+         <!--{{variablevalue}}-->
     </div>
-    {{l}} {{variable[l]}}
     
-</div>
-<button (click) = "addline(true)"></button>
+    <!--<app-sub1 (catchnum1)="catchnum1($event)" (catchnum2)="catchnum2($event)" [hidden]="functionvisible['subract']"></app-sub1>-->
+    
+    
+<button #addnewline (click) = "addline(true)"></button>
